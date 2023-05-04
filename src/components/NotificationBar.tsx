@@ -35,7 +35,7 @@ const NotificationBar = ({
     }
   };
 
-  const debouncedSetBodyPaddingTop = debounce(setBodyPaddingTop, 300);
+  const debouncedSetBodyPaddingTop = debounce(setBodyPaddingTop, 100);
 
   useLayoutEffect(() => {
     debouncedSetBodyPaddingTop(isVisible, notificationBarRef);
