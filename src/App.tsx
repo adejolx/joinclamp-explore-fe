@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Tokens } from "./types/Data";
 import useFetch from "./hooks/useFetch";
 import useModal from "./hooks/useModal";
-import useScrollResetButton from "./hooks/useScrollResetButton";
 import CardGrid from "./components/Grid";
 import NotificationBar from "./components/NotificationBar";
 import Modal from "./components/Modal";
@@ -11,13 +10,10 @@ import "./App.css";
 
 function App() {
   const modalRef = useRef<HTMLDialogElement>(null);
-  const targetRef = useRef(null);
   const { data, loading, error } = useFetch<Tokens>({ url: "data.json" });
   const [showNotification, setShowNotification] = useState(false);
   const [message, setMessage] = useState<JSX.Element | string>("");
   const { handleModalClose, handleModalOpen } = useModal(modalRef);
-  const { handleScrollToTop, showScrollReset } =
-    useScrollResetButton(targetRef);
 
   const handleNotificationClose = () => {
     setShowNotification(false);
@@ -70,7 +66,6 @@ function App() {
         <section
           className="border-trbl rounded-md stack-lg section--explore"
           data-overflow-x="scroll"
-          ref={targetRef}
         >
           <h2 className="text-grey">Buy any crypto index anytime, anywhere.</h2>
           {loading && <p>Loading Data...</p>}
@@ -85,7 +80,7 @@ function App() {
         bodyContent={
           <div className="modal-body stack-md">
             <h3 className="text-grey fs--100">Recommended</h3>
-            <ul>
+            <ul className="wallets cluster">
               <li>
                 <button
                   className="button wallet-option fs--100 rounded-md cluster"
@@ -132,13 +127,13 @@ function App() {
         footerContent={
           <p className="cluster fs--200">
             <span className="text-grey">New to Ethereum wallets?</span>
-            <a className="fw-300" onClick={handleModalClose}>
+            <a className="fw-300" onClick={handleModalClose} href="#">
               Learn More
             </a>
           </p>
         }
       />
-      {showScrollReset && <ScrollResetButton onClick={handleScrollToTop} />}
+      {<ScrollResetButton />}
     </>
   );
 }

@@ -1,8 +1,33 @@
+import { useCallback, useEffect, useState } from "react";
 import "./ScrollResetButton.css";
 
-const ScrollResetButton = ({ onClick }: { onClick: () => void }) => {
-  return (
-    <button className="scroll-reset button bg-orange cluster" onClick={onClick}>
+const ScrollResetButton = () => {
+  const [showScrollReset, setShowScrollReset] = useState(false);
+  const handleScrollToTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+  useEffect(() => {
+    const handleScrollEvent = () => {
+      if (window.pageYOffset > 300) {
+        setShowScrollReset(true);
+      } else {
+        setShowScrollReset(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollEvent);
+    return () => window.removeEventListener("scroll", handleScrollEvent);
+  }, []);
+
+  return showScrollReset ? (
+    <button
+      className="scroll-reset button bg-orange cluster"
+      onClick={handleScrollToTop}
+    >
       <svg
         aria-hidden="true"
         focusable="false"
@@ -17,7 +42,7 @@ const ScrollResetButton = ({ onClick }: { onClick: () => void }) => {
         ></path>
       </svg>
     </button>
-  );
+  ) : null;
 };
 
 export default ScrollResetButton;
