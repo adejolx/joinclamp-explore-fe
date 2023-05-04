@@ -24,12 +24,23 @@ const NotificationBar = ({
   };
 
   useLayoutEffect(() => {
-    if (isVisible && notificationBarRef.current) {
-      document.body.style.paddingBlockStart = `${notificationBarRef.current.clientHeight}px`;
-    } else {
-      document.body.style.paddingBlockStart = "";
+    const resizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === notificationBarRef.current) {
+          document.body.style.paddingBlockStart = `${entry.target.clientHeight}px`;
+        }
+      });
+    });
+
+    if (notificationBarRef.current) {
+      resizeObserver.observe(notificationBarRef.current);
     }
-  }, [isVisible, notificationBarRef.current?.clientHeight]);
+
+    return () => {
+      resizeObserver.disconnect();
+      document.body.style.paddingBlockStart = `0px`;
+    };
+  }, [notificationBarRef, isVisible]);
 
   if (!isVisible) return null;
   return ReactDOM.createPortal(
