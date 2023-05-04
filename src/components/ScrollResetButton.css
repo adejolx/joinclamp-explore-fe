@@ -16,3 +16,8 @@
 .button.scroll-reset:focus {
   outline: 2px solid transparent;
 }
+
+.scroll-reset svg {
+  width: 1rem;
+  height: 1rem;
+}
