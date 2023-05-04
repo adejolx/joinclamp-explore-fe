@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.card:focus-within {
+  outline: 3px solid var(--focus-outline);
+}
+
 .card-body {
   padding-inline: 1em;
   padding-block: 1em;
