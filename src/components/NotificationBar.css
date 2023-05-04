@@ -1,0 +1,12 @@
+.notification {
+  --justify: space-between;
+  --padding-top: 0.25rem;
+  --padding-bottom: 0.25rem;
+  --gap: 0.5rem;
+}
+
+.notification .button {
+  --button-bg-normal: transparent;
+  --button-bg-hover: transparent;
+  margin-inline-start: auto;
+}

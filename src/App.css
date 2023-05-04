@@ -1,0 +1,19 @@
+.primary-nav {
+  --justify: space-between;
+}
+
+.main {
+  --padding-top: 2.5rem;
+}
+
+.title--explore {
+  --border-color: hsl(var(--black) / 1);
+  padding-inline: 0.5rem;
+  padding-block: 0.5rem;
+  width: fit-content;
+}
+
+.section--explore {
+  padding-inline: 1.5em;
+  padding-block: 1.5em;
+}

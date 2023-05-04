@@ -1,0 +1,7 @@
+.scroll-reset .button {
+  --dimensions: 1rem;
+  height: var(--dimensions);
+  width: var(--dimensions);
+  border-radius: 50%;
+  padding: 1rem;
+}

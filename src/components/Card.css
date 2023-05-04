@@ -1,0 +1,70 @@
+.card {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  padding-inline: 1em;
+  padding-block: 1em;
+}
+
+.card-info {
+  --justify: space-between;
+  --align: flex-start;
+  --gap: 1rem;
+  --wrap-val: nowrap;
+}
+
+.card-info > * {
+  --gap: 5px;
+  --direction: column;
+  --align: flex-start;
+  flex-grow: 1;
+}
+
+.card-info > :first-child {
+  text-align: start;
+}
+
+.card-info > :nth-child(2) {
+  --align: flex-end;
+  text-align: end;
+  max-width: 12ch;
+}
+
+.card-info .images {
+  --direction: row;
+}
+
+.card-info img {
+  --dimension: 1.5rem;
+  height: var(--dimension);
+  width: var(--dimension);
+}
+
+.card-info .price {
+  --direction: row;
+  --justify: flex-end;
+  --align: center;
+  --wrap-val: nowrap;
+}
+
+.card-footer {
+  display: contents;
+}
+
+.card-footer .color-bar {
+  order: -1;
+  display: flex;
+  width: 100%;
+  height: 8px;
+}
+
+.card-footer .color-bar > * {
+  flex-grow: 1;
+}
+
+.card-footer button {
+  width: 100%;
+}

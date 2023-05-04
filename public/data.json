@@ -1,0 +1,69 @@
+{
+  "pairs": [
+    {
+      "id": "wbtc_weth",
+      "symbol": "WBTC-WETH",
+      "images": ["WBTC.svg", "WETH.svg"],
+      "priceChange": -0.2,
+      "colors": ["#f19241", "#e74694"]
+    },
+    {
+      "id": "usdc_weth",
+      "symbol": "USDC-WETH",
+      "images": ["USDC.svg", "WETH.svg"],
+      "priceChange": -0.0,
+      "colors": ["#2775ca", "#e74694"]
+    },
+    {
+      "id": "usdc_wbtc",
+      "symbol": "USDC-WBTC",
+      "images": ["USDC.svg", "WBTC.svg"],
+      "priceChange": -0.1,
+      "colors": ["#2775ca", "#f19241"]
+    },
+    {
+      "id": "weth_wmatic",
+      "symbol": "WETH-WMATIC",
+      "images": ["WETH.svg", "WMATIC.svg"],
+      "priceChange": -0.1,
+      "colors": ["#e74694", "#8b5cf6"]
+    },
+    {
+      "id": "usdc_wmatic",
+      "symbol": "USDC-WMATIC",
+      "images": ["USDC.svg", "WMATIC.svg"],
+      "priceChange": -0.0,
+      "colors": ["#2775ca", "#8b5cf6"]
+    }
+  ],
+  "trios": [
+    {
+      "id": "wbtc_weth_usdc",
+      "symbol": "WBTC-WETH-USDC",
+      "images": ["WBTC.svg", "WETH.svg", "USDC.svg"],
+      "priceChange": -0.1,
+      "colors": ["#f19241", "#e74694", "#2775ca"]
+    },
+    {
+      "id": "wbtc_wbth_wmatic",
+      "symbol": "WBTC-WETH-WMATIC",
+      "images": ["WBTC.svg", "WETH.svg", "WMATIC.svg"],
+      "priceChange": -0.2,
+      "colors": ["#f19241", "#e74694", "#8b5cf6"]
+    },
+    {
+      "id": "dai_usdc_wbtc",
+      "symbol": "DAI-USDC-WBTC",
+      "images": ["DAI.svg", "USDC.svg", "WBTC.svg"],
+      "priceChange": -0.1,
+      "colors": ["#faca15", "#2775ca", "#f19241"]
+    },
+    {
+      "id": "dai_weth_wbtc",
+      "symbol": "DAI-WETH-WBTC",
+      "images": ["DAI.svg", "WETH.svg", "WBTC.svg"],
+      "priceChange": -0.1,
+      "colors": ["#faca15", "#e74694", "#f19241"]
+    }
+  ]
+}
