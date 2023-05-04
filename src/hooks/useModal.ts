@@ -27,6 +27,7 @@ const useModal = (modalRef: React.RefObject<HTMLDialogElement>) => {
         e.clientY > dialogDimensions!.bottom
       ) {
         modalRef.current?.close();
+        document.body.style.overflow = "auto";
       }
     };
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -54,13 +55,13 @@ const useModal = (modalRef: React.RefObject<HTMLDialogElement>) => {
   }, []);
 
   const handleModalOpen = useCallback(() => {
-    modalRef.current?.showModal();
     document.body.style.overflow = "hidden";
+    modalRef.current?.showModal();
   }, []);
 
   const handleModalClose = useCallback(() => {
-    modalRef.current?.close();
     document.body.style.overflow = "auto";
+    modalRef.current?.close();
   }, []);
 
   return { handleModalOpen, handleModalClose };
