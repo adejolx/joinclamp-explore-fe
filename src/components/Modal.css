@@ -28,8 +28,10 @@
   transition: transform 150ms ease-in;
 }
 
-.modal-header button:hover {
-  transform: scale(1.2);
+@media (hover: hover) {
+  .modal-header button:hover {
+    transform: scale(1.2);
+  }
 }
 
 .hamburger {
