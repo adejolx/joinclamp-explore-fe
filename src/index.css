@@ -237,7 +237,7 @@ a:focus {
 
 .grid {
   display: grid;
-  gap: 2rem;
+  gap: var(--gap, 2rem);
   grid-template-columns: repeat(
     auto-fit,
     minmax(min(var(--minimum, 20rem), 100%), 1fr)

@@ -39,13 +39,12 @@ function App() {
 
   return (
     <>
-      <NotificationBar
-        message={message}
-        isVisible={showNotification}
-        onClick={handleNotificationClose}
-      />
-
-      <header className="border-b">
+      <header className="border-b" data-name="top-level-header">
+        <NotificationBar
+          message={message}
+          isVisible={showNotification}
+          onClick={handleNotificationClose}
+        />
         <nav className="primary-nav container cluster">
           <a href="#" className="fw-300">
             clamp
@@ -80,7 +79,7 @@ function App() {
         bodyContent={
           <div className="modal-body stack-md">
             <h3 className="text-grey fs--100">Recommended</h3>
-            <ul className="wallets cluster">
+            <ul className="wallets grid">
               <li>
                 <button
                   className="button wallet-option fs--100 rounded-md cluster"

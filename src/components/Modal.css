@@ -4,7 +4,7 @@
 }
 
 .modal {
-  min-width: 20rem;
+  width: min(100%, 30rem);
   border: none;
   padding: 0;
 }
@@ -44,15 +44,7 @@
 }
 
 .modal-body .wallets {
-  width: 100%;
-  --align: flex-start;
-  --justify: flex-start;
   --gap: 0;
-}
-
-.modal-body .wallets li {
-  flex-basis: 20rem;
-  flex-grow: 1;
 }
 
 .modal-body .button {
