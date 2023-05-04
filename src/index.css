@@ -280,7 +280,7 @@ a:focus {
 }
 
 .button:focus {
-  outline: 5px solid var(--focus-outline);
+  outline: 3px solid var(--focus-outline);
 }
 
 @media (hover: hover) {
