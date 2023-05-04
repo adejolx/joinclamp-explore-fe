@@ -1,12 +1,11 @@
 import ReactDOM from "react-dom";
 import "./NotificationBar.css";
 import { useLayoutEffect, useRef } from "react";
-import debounce from "../utility/debounce";
 
 type Props = {
   message: JSX.Element | string;
   type?: "sticky" | "fixed";
-  isVisible: boolean;
+  isVisible: Boolean;
   onClick: () => void;
 };
 
@@ -24,22 +23,13 @@ const NotificationBar = ({
     right: 0,
   };
 
-  const setBodyPaddingTop = (
-    isVisible: boolean,
-    notificationBarRef: React.RefObject<HTMLDivElement>
-  ) => {
-    if (isVisible && notificationBarRef.current) {
-      document.body.style.paddingTop = `${notificationBarRef.current.clientHeight}px`;
-    } else {
-      document.body.style.paddingTop = "";
-    }
-  };
-
-  const debouncedSetBodyPaddingTop = debounce(setBodyPaddingTop, 300);
-
   useLayoutEffect(() => {
-    debouncedSetBodyPaddingTop(isVisible, notificationBarRef);
-  }, [isVisible, notificationBarRef, debouncedSetBodyPaddingTop]);
+    if (isVisible && notificationBarRef.current) {
+      document.body.style.paddingBlockStart = `${notificationBarRef.current.clientHeight}px`;
+    } else {
+      document.body.style.paddingBlockStart = "";
+    }
+  }, [isVisible, notificationBarRef.current?.clientHeight]);
 
   if (!isVisible) return null;
   return ReactDOM.createPortal(
