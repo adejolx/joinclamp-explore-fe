@@ -78,7 +78,66 @@ function App() {
           <CardGrid data={data as Tokens} />
         </section>
       </main>
-      <Modal ref={modalRef} onClose={handleModalClose} />
+      <Modal
+        ref={modalRef}
+        onClose={handleModalClose}
+        headerContent={<h2 className="text-centered">Connect a Wallet</h2>}
+        bodyContent={
+          <div className="modal-body stack-md">
+            <h3 className="text-grey fs--100">Recommended</h3>
+            <ul>
+              <li>
+                <button
+                  className="button wallet-option fs--100 rounded-md cluster"
+                  data-state="inverted"
+                  onClick={handleModalClose}
+                >
+                  <img />
+                  <span>MetaMask</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  className="button wallet-option fs--100 rounded-md cluster"
+                  data-state="inverted"
+                  onClick={handleModalClose}
+                >
+                  <img />
+                  <span>Rainbow</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  className="button wallet-option fs--100 rounded-md cluster"
+                  data-state="inverted"
+                  onClick={handleModalClose}
+                >
+                  <img />
+                  <span>WalletConnect</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  className="button wallet-option fs--100 rounded-md cluster"
+                  data-state="inverted"
+                  onClick={handleModalClose}
+                >
+                  <img />
+                  <span>Coinbase Wallet</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        }
+        footerContent={
+          <p className="cluster fs--200">
+            <span className="text-grey">New to Ethereum wallets?</span>
+            <a className="fw-300" onClick={handleModalClose}>
+              Learn More
+            </a>
+          </p>
+        }
+      />
       {showScrollReset && <ScrollResetButton onClick={handleScrollToTop} />}
     </>
   );

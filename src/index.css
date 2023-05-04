@@ -208,6 +208,10 @@ a:focus {
   border-radius: 0.25rem;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .stack-sm > * + * {
   margin-block-start: 0.5rem;
 }
@@ -281,6 +285,12 @@ a:focus {
 
 .button:focus {
   outline: 3px solid var(--focus-outline);
+}
+
+.button[data-state="inverted"] {
+  --button-bg-normal: transparent;
+  --button-bg-hover: hsl(var(--black) / 0.1);
+  color: hsl(var(--black));
 }
 
 @media (hover: hover) {
