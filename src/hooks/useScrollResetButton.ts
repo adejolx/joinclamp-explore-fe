@@ -8,17 +8,13 @@ const useScrollResetButton = (
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: "100px",
-      threshold: 0.6,
+      rootMargin: "0px",
+      threshold: 0.5,
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          setShowScrollReset(true);
-        } else {
-          setShowScrollReset(false);
-        }
+        setShowScrollReset(entry.intersectionRatio > 0.5);
       });
     }, options);
 

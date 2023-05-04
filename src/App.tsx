@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import "./App.css";
-import CardGrid from "./components/Grid";
-import useFetch from "./hooks/useFetch";
 import { Tokens } from "./types/Data";
+import useFetch from "./hooks/useFetch";
+import useModal from "./hooks/useModal";
+import useScrollResetButton from "./hooks/useScrollResetButton";
+import CardGrid from "./components/Grid";
 import NotificationBar from "./components/NotificationBar";
 import Modal from "./components/Modal";
 import ScrollResetButton from "./components/ScrollResetButton";
-import useModal from "./hooks/useModal";
-import useScrollResetButton from "./hooks/useScrollResetButton";
+import "./App.css";
 
 function App() {
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -63,13 +63,14 @@ function App() {
           </button>
         </nav>
       </header>
-      <main className="main container stack-md" ref={targetRef}>
+      <main className="main container stack-md">
         <h1 className="fs--100 title--explore border-b">
           <a>Explore</a>
         </h1>
         <section
           className="border-trbl rounded-md stack-lg section--explore"
           data-overflow-x="scroll"
+          ref={targetRef}
         >
           <h2 className="text-grey">Buy any crypto index anytime, anywhere.</h2>
           {loading && <p>Loading Data...</p>}
