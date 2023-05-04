@@ -94,6 +94,8 @@ select {
   --black: 0 0% 0%;
   --orange: 21, 100%, 59%;
 
+  --focus-outline: hsl(var(--orange));
+
   /* Container widths 
   ----------------------*/
   --w-mobile: 375px;
@@ -135,7 +137,15 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
+}
+a:focus {
+  outline: 5px solid var(--focus-outline);
+}
+
+@media (hover: hover) {
+  a {
+    cursor: pointer;
+  }
 }
 
 /* Utility classes
@@ -265,13 +275,22 @@ a {
   order: 1;
   padding-inline: 1em;
   padding-block: 0.5em;
-  cursor: pointer;
   background-color: var(--button-bg-normal, hsl(var(--black) / 1));
   transition: background-color 150ms ease-in-out;
 }
 
-.button:hover {
-  background-color: var(--button-bg-hover, hsl(var(--black) / 0.8));
+.button:focus {
+  outline: 5px solid var(--focus-outline);
+}
+
+@media (hover: hover) {
+  .button {
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: var(--button-bg-hover, hsl(var(--black) / 0.8));
+  }
 }
 
 .bg-orange {
@@ -281,9 +300,11 @@ a {
 .text-dark {
   color: hsl(var(--black) / 0.8);
 }
+
 .text-grey {
   color: hsl(var(--black) / 0.5);
 }
+
 .text-white {
   color: hsl(var(--white) / 0.95);
 }

@@ -6,57 +6,21 @@ import { Tokens } from "./types/Data";
 import NotificationBar from "./components/NotificationBar";
 import Modal from "./components/Modal";
 import ScrollResetButton from "./components/ScrollResetButton";
+import useModal from "./hooks/useModal";
+import useScrollResetButton from "./hooks/useScrollResetButton";
 
 function App() {
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const targetRef = useRef(null);
   const { data, loading, error } = useFetch<Tokens>({ url: "data.json" });
   const [showNotification, setShowNotification] = useState(false);
   const [message, setMessage] = useState<JSX.Element | string>("");
-  const [showScrollReset, setShowScrollReset] = useState(false);
-  const modalRef = useRef<HTMLDialogElement>(null);
-  const targetRef = useRef(null);
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "500px",
-      threshold: 0.8,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          setShowScrollReset(true);
-        } else {
-          setShowScrollReset(false);
-        }
-      });
-    }, options);
-
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { handleModalClose, handleModalOpen } = useModal(modalRef);
+  const { handleScrollToTop, showScrollReset } =
+    useScrollResetButton(targetRef);
 
   const handleNotificationClose = () => {
     setShowNotification(false);
-  };
-
-  const handleModalOpen = () => {
-    modalRef.current?.showModal();
-    document.body.style.overflow = "hidden";
-  };
-  const handleModalClose = () => {
-    modalRef.current?.close();
-    document.body.style.overflow = "auto";
-  };
-
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   useEffect(() => {
