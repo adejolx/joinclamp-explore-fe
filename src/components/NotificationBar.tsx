@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import "./NotificationBar.css";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import debounce from "../utility/debounce";
 
 type Props = {
   message: JSX.Element | string;
@@ -16,6 +17,7 @@ const NotificationBar = ({
   onClick,
 }: Props) => {
   const notificationBarRef = useRef<HTMLDivElement>(null);
+  const delay = 100;
   const style = {
     position: type,
     top: 0,
@@ -23,14 +25,16 @@ const NotificationBar = ({
     right: 0,
   };
 
-  useLayoutEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target === notificationBarRef.current) {
-          document.body.style.paddingBlockStart = `${entry.target.clientHeight}px`;
-        }
-      });
-    });
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(
+      debounce((entries) => {
+        entries.forEach((entry: ResizeObserverEntry) => {
+          if (entry.target === notificationBarRef.current) {
+            document.body.style.paddingBlockStart = `${entry.target.clientHeight}px`;
+          }
+        });
+      }, delay)
+    );
 
     if (notificationBarRef.current) {
       resizeObserver.observe(notificationBarRef.current);
@@ -40,7 +44,7 @@ const NotificationBar = ({
       resizeObserver.disconnect();
       document.body.style.paddingBlockStart = `0px`;
     };
-  }, [notificationBarRef, isVisible]);
+  }, [isVisible, notificationBarRef.current]);
 
   if (!isVisible) return null;
   return ReactDOM.createPortal(
